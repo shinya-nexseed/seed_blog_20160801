@@ -1,8 +1,8 @@
 <?php
     require('models/blog.php');
 
-    echo 'blogs_controller通過しました';
-    echo '<br>';
+    // echo 'blogs_controller通過しました';
+    // echo '<br>';
 
     // クラスをインスタンス化し$controllerオブジェクト作成
     // indexメソッドの呼び出し
@@ -36,11 +36,15 @@
         // 記事一覧表示用メソッド
         // indexアクションメソッドを定義
         function index() {
-            echo 'BlogsControllerクラスのindex()呼び出し';
-            echo '<br>';
+            // echo 'BlogsControllerクラスのindex()呼び出し';
+            // echo '<br>';
             // モデルを呼び出す
             $blog = new Blog();
-            $blog->index();
+            $viewOptions = $blog->index();
+            // アクション名を設定する
+            $this->action = 'index';
+
+            include('views/layout/application.php');
         }
 
         // その他のアクションメソッドも定義
